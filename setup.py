@@ -12,14 +12,11 @@ with open(path.join(here, "README.rst"), encoding="utf-8") as f:
 setup(
     packages=find_packages(),
     include_package_data=True,
-    # package_data={
-    #     "pyphone": ["images", "pyPhone.config"]
-    # },
     entry_points={
         "console_scripts": ["pyphone=pyphone:main", ]
     },
     python_requires='~=3.5',
-    install_requires=["python-gammu", "Pillow", "httplib2", "oauth2client", "pyperclip"],
+    install_requires=["python-gammu", "Pillow", "httplib2", "oauth2client", "google-api-python-client", "pyperclip"],
 
     name="pyPhone",
     version="1.0.0a1",
