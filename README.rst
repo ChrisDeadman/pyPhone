@@ -1,5 +1,5 @@
-pyPhone v0.1
-============
+pyPhone 1.0.0a1
+===============
 
 Author: ChrisDeadman
 
@@ -26,6 +26,13 @@ TODO list
 -  Phone-stored contacts support
 -  Call mangling support (?)
 -  Calender support (?)
+
+Known Issues
+------------
+
+-  Incoming call detection can take 1-2 seconds
+-  End-of-call detection can take up to 30 seconds
+-  Those are likely issues on gammu side but this has yet to be checked
 
 Installing
 ----------
@@ -62,10 +69,11 @@ To support loading contacts from your google account, enter
 Those can be obtained by `creating a google API
 key <https://console.developers.google.com/apis/>`__ (enable *Google People API*)
 
-Supported Python versions
--------------------------
+Required versions
+-----------------
 
 -  Python 3.5
+-  libgammu >= 1.38.6
 
 Supported Operating Systems
 ---------------------------
@@ -82,7 +90,7 @@ Application icon credits go to:
 Release notes
 =============
 
-pyPhone v0.1
-------------
+pyPhone 1.0.0a1
+---------------
 
 -  Initial release
