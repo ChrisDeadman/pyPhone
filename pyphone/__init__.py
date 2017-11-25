@@ -31,7 +31,9 @@ def main():
     config = utils.load_configuration(utils.get_user_file("pyPhone.config"))
 
     logging.basicConfig(filename=utils.get_user_file("pyPhone.log"), filemode="w",
-                        level=getattr(logging, config["LOGGING"]["level"]))
+                        level=getattr(logging, config["LOGGING"]["level"]),
+                        format="%(asctime)s %(levelname)-5s %(name)-8s %(message)s",
+                        datefmt="%H:%M:%S", )
     logging.getLogger("PIL.PngImagePlugin").setLevel("WARNING")
 
     try:
