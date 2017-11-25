@@ -30,7 +30,17 @@ class InfoController(Controller):
         system_info_commands = [
             "GetManufacturer",
             "GetModel",
-            "GetIMEI"
+            "GetFirmware",
+            "GetNetworkInfo",
+            "GetSecurityStatus",
+            "GetDisplayStatus",
+            "GetSMSStatus",
+            "GetCalendarStatus",
+            "GetFileSystemStatus",
+            "GetIMEI",
+            "GetOriginalIMEI",
+            "GetSIMIMSI",
+            "GetPPM"
         ]
 
         def add_system_info(name, result, error, percents):
@@ -47,7 +57,9 @@ class InfoController(Controller):
             self.panel.system_info_tree.delete(entry)
 
         for entry in system_info:
-            self.panel.system_info_tree.insert("", END, text=entry[0], values=(entry[1],))
+            key = entry[0]
+            value = entry[1] if entry[1] is not None else ""
+            self.panel.system_info_tree.insert("", END, text=key, values=(value,))
 
     def _get_connection_info(self):
         def set_connection_info(name, result, error, percents):
