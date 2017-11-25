@@ -39,7 +39,7 @@ def main():
 
     try:
         window = Tk()
-        window.wm_title("pyPhone v0.1")
+        window.wm_title("pyPhone v1.0.0a2")
         window.attributes("-fullscreen", True)
         window.grid_rowconfigure(0, weight=1)
         window.grid_columnconfigure(0, weight=1)

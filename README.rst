@@ -1,4 +1,4 @@
-pyPhone 1.0.0a1
+pyPhone 1.0.0a2
 ===============
 
 Author: ChrisDeadman
@@ -30,9 +30,9 @@ TODO list
 Known Issues
 ------------
 
--  Incoming call detection can take 1-2 seconds
--  End-of-call detection can take up to 30 seconds
--  Those are likely issues on gammu side but this has yet to be checked
+-  **Answering a call does not show ongoing call window for 30-60secs**
+      | *This was a bug in libgammu and has been* `fixed here <https://github.com/gammu/gammu/commit/ac5106175fdea7622772be46f1221cd66a24ec58#diff-0ce4149983bed46e06d03ae69aab2206>`__.
+      | *You might need to install a newer libgammu from source depending on your distro.*
 
 Installing
 ----------
@@ -72,13 +72,13 @@ key <https://console.developers.google.com/apis/>`__ (enable *Google People API*
 Required versions
 -----------------
 
--  Python 3.5
+-  Python >= 3.5
 -  libgammu >= 1.38.6
 
 Supported Operating Systems
 ---------------------------
 
--  Linux (tested on Ubuntu MATE 17.04 and Raspbian)
+-  Linux (tested on Ubuntu and Raspbian)
 -  MacOS (?)
 -  Windows (?)
 
@@ -89,6 +89,13 @@ Application icon credits go to:
 
 Release notes
 =============
+
+pyPhone 1.0.0a2
+---------------
+
+-  Bugfix: fix calls not detected after error-status during answering
+-  Bugfix: fix event detection delay by using ReadDevice() for polling
+-  Display more phone information on the information screen
 
 pyPhone 1.0.0a1
 ---------------
