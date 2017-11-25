@@ -13,6 +13,7 @@ from pyphone.controller.contacts_controller import ContactsController
 from pyphone.controller.dial_controller import DialController
 from pyphone.controller.gammu_controller import GammuController
 from pyphone.controller.gauth_controller import GAuthController
+from pyphone.controller.incoming_call_controller import IncomingCallController
 from pyphone.controller.info_controller import InfoController
 from pyphone.controller.ongoing_call_controller import OngoingCallController
 from pyphone.controller.top_controller import TopController
@@ -62,6 +63,7 @@ def main():
                                    "pyPhone"), \
                 ControllerResource(ContactsController, call_panel.side_panel.ContactListPanel), \
                 ControllerResource(DialController, call_panel.main_panel.DialPanel), \
+                ControllerResource(IncomingCallController, call_panel.main_panel.IncomingCallPanel), \
                 ControllerResource(OngoingCallController, call_panel.main_panel.OngoingCallPanel), \
                 ControllerResource(CallController, call_panel), \
                 ControllerResource(InfoController, root.top_panel.InfoPanel), \
