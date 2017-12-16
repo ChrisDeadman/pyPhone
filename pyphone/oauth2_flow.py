@@ -28,7 +28,7 @@ def authorize(client_id, client_secret, scope, user_agent, credentials_path):
             # prepare response listener
             server_address = ("localhost", get_free_port())
             httpd = ClientRedirectServer(server_address, ClientRedirectHandler)
-            httpd.timeout = 30
+            httpd.timeout = 3 * 60
 
             # open authorize url
             oauth2_flow.redirect_uri = "http://{}:{}/".format(server_address[0], server_address[1])
