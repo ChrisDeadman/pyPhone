@@ -19,7 +19,7 @@ setup(
     install_requires=["python-gammu", "Pillow", "httplib2", "oauth2client", "google-api-python-client", "pyperclip"],
 
     name="pyPhone",
-    version="1.0.0a1",
+    version="1.0.0a2",
     description="Minimalistic phone client",
     long_description=long_description,
     author="Christopher Hubmann",
@@ -43,6 +43,7 @@ setup(
         "Operating System :: Unix",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
         "Topic :: Utilities",
         "Topic :: Communications :: Telephony",
         "Topic :: System :: Hardware"
