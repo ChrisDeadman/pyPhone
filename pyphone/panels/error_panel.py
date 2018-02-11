@@ -1,7 +1,7 @@
 from tkinter import Frame, Label
 
 from pyphone.utils import *
-from pyphone.widget.panel import Panel
+from pyphone.widgets import *
 
 
 class ErrorPanel(Panel):

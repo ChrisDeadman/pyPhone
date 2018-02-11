@@ -1,15 +1,11 @@
-from pyphone.panel.contact_list_panel import ContactListPanel
-from pyphone.panel.dial_panel import DialPanel
-from pyphone.panel.error_panel import ErrorPanel
-from pyphone.panel.gauth_panel import GAuthPanel
-from pyphone.panel.incoming_call_panel import IncomingCallPanel
-from pyphone.panel.ongoing_call_panel import OngoingCallPanel
-from pyphone.widget.panel import Panel
-from pyphone.widget.switch_panel import SwitchPanel
+from pyphone.widgets import *
 
 
 class CallPanel(Panel):
     def __init__(self, master, cnf={}, **kw):
+        from pyphone.panels import GAuthPanel, ContactListPanel, DialPanel, IncomingCallPanel, OngoingCallPanel, \
+            ErrorPanel
+
         super().__init__(master, cnf, **kw)
 
         self.grid_rowconfigure(0, weight=1)

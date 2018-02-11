@@ -1,4 +1,4 @@
-from pyphone.widget.panel import Panel
+from pyphone.widgets.panel import Panel
 
 
 class SwitchPanel(Panel):

@@ -1,13 +1,10 @@
-from pyphone.panel.bottom_panel import BottomPanel
-from pyphone.panel.call_panel import CallPanel
-from pyphone.panel.info_panel import InfoPanel
-from pyphone.panel.message_panel import MessagePanel
-from pyphone.widget.panel import Panel
-from pyphone.widget.switch_panel import SwitchPanel
+from pyphone.widgets import *
 
 
 class RootPanel(Panel):
     def __init__(self, master, cnf={}, **kw):
+        from pyphone.panels import CallPanel, MessagePanel, InfoPanel, BottomPanel
+
         super().__init__(master, cnf, **kw)
 
         self.grid_rowconfigure(0, weight=7)

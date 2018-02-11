@@ -1,8 +1,7 @@
 from tkinter import Button, Entry, Frame, StringVar
 
 from pyphone.utils import *
-from pyphone.widget.num_keypad import NumKeypad
-from pyphone.widget.panel import Panel
+from pyphone.widgets import *
 
 
 class DialPanel(Panel):

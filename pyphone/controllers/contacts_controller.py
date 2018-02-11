@@ -5,8 +5,8 @@ from tkinter import *
 
 import pyperclip
 
-from pyphone import controller
-from pyphone.controller import Controller
+from pyphone import controllers
+from pyphone.controllers.controller import Controller
 from pyphone.utils import *
 
 Contact = namedtuple("Contact", ["display_name", "phone_numbers"])
@@ -31,15 +31,17 @@ class ContactsController(Controller):
         self._contacts_tree.bind("<<TreeviewSelect>>", self._on_contacts_tree_select)
 
     def _on_raise(self):
-        self._people_service = controller.GAuthController.people_service
+        from pyphone.controllers import GAuthController, CallController
+
+        self._people_service = controllers.get(GAuthController).people_service
 
         if self._people_service is None:
-            controller.CallController.show_gauth_panel()
+            controllers.get(CallController).show_gauth_panel()
             return
 
         if self.contacts is None:
             self.contacts = []
-            self._fetch_contacts_thread = threading.Thread(target=self._fetch_contacts_worker)
+            self._fetch_contacts_thread = threading.Thread(target=self._fetch_contacts_worker, daemon=True)
             self._fetch_contacts_thread.start()
 
     def cleanup(self):
@@ -57,14 +59,18 @@ class ContactsController(Controller):
         return None
 
     def _fetch_contacts_worker(self):
+        from pyphone.controllers import CallController
+
         try:
             self._fetch_contacts()
         except Exception as e:
             error_message = "{}: {}".format(type(e).__name__, e)
             self._log.exception(error_message)
-            controller.CallController.show_error("Authorization failed", error_message)
+            controllers.get(CallController).show_error("Authorization failed", error_message)
 
     def _on_contacts_tree_select(self, event):
+        from pyphone.controllers import DialController, CallController
+
         selection = self._contacts_tree.selection()
         if len(selection) < 1:
             return
@@ -80,9 +86,9 @@ class ContactsController(Controller):
 
         # copy any phone number to dial pad
         if re.match("^[+0-9]+$", item_text):
-            controller.DialController.set_phone_number(item_text)
+            controllers.get(DialController).set_phone_number(item_text)
 
-        controller.CallController.show_dial_panel()
+        controllers.get(CallController).show_dial_panel()
 
     def _fetch_contacts(self):
         self._log.info("Fetching google contacts...")

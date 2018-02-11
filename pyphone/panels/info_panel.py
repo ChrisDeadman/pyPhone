@@ -2,8 +2,7 @@ from tkinter import Label, LabelFrame
 from tkinter.ttk import Progressbar, Scrollbar
 
 from pyphone.utils import *
-from pyphone.widget.autosize_tree_view import AutosizeTreeview
-from pyphone.widget.panel import Panel
+from pyphone.widgets import *
 
 
 class InfoPanel(Panel):

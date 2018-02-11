@@ -1,7 +1,6 @@
 from tkinter.ttk import Scrollbar
 
-from pyphone.widget.autosize_tree_view import AutosizeTreeview
-from pyphone.widget.panel import Panel
+from pyphone.widgets import *
 
 
 class ContactListPanel(Panel):

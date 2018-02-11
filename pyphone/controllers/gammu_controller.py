@@ -1,10 +1,11 @@
 import logging
+import threading
 from collections import namedtuple
 
 from gammu import StateMachine
 from gammu.worker import GammuWorker
 
-from pyphone.controller import *
+from pyphone.controllers.controller import Controller
 
 IncomingCallEvent = namedtuple("IncomingCallEvent", ["number"])
 EndCallEvent = namedtuple("EndCallEvent", ["number"])
@@ -29,7 +30,7 @@ class GammuController(Controller):
 
         self._state_machine = StateMachine()
         self._gammu_worker = GammuWorker(self._on_gammu_result)
-        self._reconnect_thread = threading.Thread(target=self._reconnect_worker)
+        self._reconnect_thread = threading.Thread(target=self._reconnect_worker, daemon=True)
         self._reconnect_thread.start()
 
     def _reconnect_worker(self):

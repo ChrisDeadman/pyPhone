@@ -1,5 +1,6 @@
-from pyphone import controller
-from pyphone.controller import Controller
+from pyphone import controllers
+
+from pyphone.controllers.controller import Controller
 
 
 class DialController(Controller):
@@ -15,10 +16,12 @@ class DialController(Controller):
         return self.panel.phone_number_text.get()
 
     def _dial_number(self):
+        from pyphone.controllers import CallController, GammuController
+
         def command_finished(name, result, error, percents):
             if error is None:
-                controller.CallController.show_ongoing_call_panel()
+                controllers.get(CallController).show_ongoing_call_panel()
             else:
-                controller.CallController.show_error("Could not initiate call", error)
+                controllers.get(CallController).show_error("Could not initiate call", error)
 
-        controller.GammuController.enqueue_command("DialVoice", (self.get_phone_number(),), command_finished)
+        controllers.get(GammuController).enqueue_command("DialVoice", (self.get_phone_number(),), command_finished)

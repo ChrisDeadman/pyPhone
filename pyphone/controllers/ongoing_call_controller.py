@@ -1,7 +1,8 @@
+import threading
 from datetime import datetime, timedelta
 
-from pyphone import controller
-from pyphone.controller.gammu_controller import *
+from pyphone import controllers
+from pyphone.controllers.controller import Controller
 
 
 class OngoingCallController(Controller):
@@ -13,7 +14,7 @@ class OngoingCallController(Controller):
         panel.bind_on_raise(self._on_raise)
         panel.hangup_button.configure(command=self._hangup_call)
 
-        self._update_duration_thread = threading.Thread(target=self._update_duration_worker)
+        self._update_duration_thread = threading.Thread(target=self._update_duration_worker, daemon=True)
         self._update_duration_thread.start()
 
     def cleanup(self):
@@ -24,11 +25,13 @@ class OngoingCallController(Controller):
         self._start_time = datetime.now()
 
     def _hangup_call(self):
+        from pyphone.controllers import CallController, GammuController
+
         def command_finished(name, result, error, percents):
             if error is not None:
-                controller.CallController.show_error("Could not hangup call", error)
+                controllers.get(CallController).show_error("Could not hangup call", error)
 
-        controller.GammuController.enqueue_command("CancelCall", (0, True), command_finished)
+        controllers.get(GammuController).enqueue_command("CancelCall", (0, True), command_finished)
 
     def _update_duration_worker(self):
         while not self.stopped.wait(0.5):

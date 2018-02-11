@@ -6,19 +6,8 @@ from tkinter import ttk
 from oauth2client import tools
 
 from pyphone import utils
-from pyphone.controller import *
-from pyphone.controller.bottom_controller import BottomController
-from pyphone.controller.call_controller import CallController
-from pyphone.controller.contacts_controller import ContactsController
-from pyphone.controller.dial_controller import DialController
-from pyphone.controller.gammu_controller import GammuController
-from pyphone.controller.gauth_controller import GAuthController
-from pyphone.controller.incoming_call_controller import IncomingCallController
-from pyphone.controller.info_controller import InfoController
-from pyphone.controller.ongoing_call_controller import OngoingCallController
-from pyphone.controller.top_controller import TopController
-from pyphone.controller.window_controller import WindowController
-from pyphone.panel.root_panel import RootPanel
+from pyphone.controllers import *
+from pyphone.panels import *
 
 
 def main():

@@ -1,7 +1,7 @@
 from tkinter import Label
 
 from pyphone.utils import *
-from pyphone.widget.panel import Panel
+from pyphone.widgets import *
 
 
 class MessagePanel(Panel):

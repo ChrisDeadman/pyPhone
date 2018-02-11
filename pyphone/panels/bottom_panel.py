@@ -1,7 +1,7 @@
 from tkinter import Button
 
 from pyphone.utils import *
-from pyphone.widget.panel import Panel
+from pyphone.widgets import Panel
 
 
 class BottomPanel(Panel):

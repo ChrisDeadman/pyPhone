@@ -1,6 +1,6 @@
 from tkinter import Button
 
-from pyphone.widget.keypad import Keypad
+from pyphone.widgets.keypad import Keypad
 
 
 class NumKeypad(Keypad):
